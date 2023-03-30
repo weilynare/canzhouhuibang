@@ -1,0 +1,59 @@
+Private Sub cmdPrintLabel_Click()
+    Dim riqi, cpxh, jcyl, cqsj, phsj, cssj, xll, csjg, jyy As String
+    
+    Call openport("TSC DC2700")
+    Call setup("101.6", "39.54", "5", "11", "0", "3", "0")
+    Call clearbuffer
+    Call sendcommand("DIRECTION 1")
+    
+    Call windowsfont(205, 10, 30, 0, 0, 0, "宋体", [B1].Value)
+    Call windowsfont(135, 60, 30, 0, 0, 0, "宋体", [A2].Value + "2023-2-20 13:52:54")
+    Call windowsfont(135, 100, 30, 0, 0, 0, "宋体", [A3].Value + "88888" + "  " + [C3].Value + "08.7kPa")
+    Call windowsfont(135, 140, 30, 0, 0, 0, "宋体", [A4].Value + "13000sec" + "  " + [C4].Value + "70.0sec")
+    Call windowsfont(135, 180, 30, 0, 0, 0, "宋体", [A5].Value + "60.0sec" + "  " + [C5].Value + "+0.2Pa")
+    Call windowsfont(135, 220, 30, 0, 0, 0, "宋体", [A6].Value + "合  格" + "  " + [C6].Value + "张三")
+'    Call windowsfont(135, 260, 30, 0, 0, 0, "宋体", [A7].Value + [B7].Value + "  " + [C7].Value + [D7].Value)
+    Call windowsfont(135, 260, 30, 0, 0, 0, "宋体", [A7].Value + "" + [B7].Value + "   " + [C7].Value + "" + [D7].Value)
+    Call sendcommand("SET CUTTER 1")
+    Call printlabel("1", "1")
+    Call closeport
+End Sub
+
+
+Private Sub PrintLabelPro(ByVal riqi As String, cpxh As String, jcyl As String, cqsj As String, phsj As String, cssj As String, xll As String, csjg As String, jyy As String)
+    Call openport("TSC DC2700")
+    Call setup("101.6", "39.54", "5", "11", "0", "3", "0")
+    Call clearbuffer
+    Call sendcommand("DIRECTION 1")
+    Call windowsfont(205, 10, 30, 0, 0, 0, "宋体", [B1].Value)
+    Call windowsfont(135, 60, 30, 0, 0, 0, "宋体", [A2].Value + riqi)
+    Call windowsfont(135, 100, 30, 0, 0, 0, "宋体", [A3].Value + cpxh + "  " + [C3].Value + jcyl)
+    Call windowsfont(135, 140, 30, 0, 0, 0, "宋体", [A4].Value + cqsj + "  " + [C4].Value + phsj)
+    Call windowsfont(135, 180, 30, 0, 0, 0, "宋体", [A5].Value + cssj + "  " + [C5].Value + xll)
+    Call windowsfont(135, 220, 30, 0, 0, 0, "宋体", [A6].Value + csjg + "  " + [C6].Value + jyy)
+'    Call windowsfont(135, 260, 30, 0, 0, 0, "宋体", [A7].Value + "" + [B7].Value + "   " + [C7].Value + "" + [D7].Value)
+    Call sendcommand("SET CUTTER 1")
+    Call PrintLabel("1", "1")
+    Call closeport
+End Sub
+
+Sub aa()
+ Call PrintLabelPro("23333", "aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh")
+End Sub
+
+Private Sub PrintLabelPro(ByVal riqi As String, cpxh As String, jcyl As String, cqsj As String, phsj As String, cssj As String, xll As String, csjg As String, jyy As String)
+    Call openport("TSC DC2700")
+    Call setup("101.6", "39.54", "5", "11", "0", "3", "0")
+    Call clearbuffer
+    Call sendcommand("DIRECTION 1")
+    Call windowsfont(205, 10, 30, 0, 0, 0, "宋体", [B1].Value)
+    Call windowsfont(135, 60, 30, 0, 0, 0, "宋体", [A2].Value + riqi)
+    Call windowsfont(135, 100, 30, 0, 0, 0, "宋体", [A3].Value + [B3].Value + "  " + [C3].Value + jcyl)
+    Call windowsfont(135, 140, 30, 0, 0, 0, "宋体", [A4].Value + [B4].Value + "  " + [C4].Value + [D4].Value)
+    Call windowsfont(135, 180, 30, 0, 0, 0, "宋体", [A5].Value + [B5].Value + "  " + [C5].Value + xll)
+    Call windowsfont(135, 220, 30, 0, 0, 0, "宋体", [A6].Value + csjg + "  " + [C6].Value + [D6].Value)
+'    Call windowsfont(135, 260, 30, 0, 0, 0, "宋体", [A7].Value + "" + [B7].Value + "   " + [C7].Value + "" + [D7].Value)
+    Call sendcommand("SET CUTTER 1")
+    Call printlabel("1", "1")
+    Call closeport
+End Sub
